@@ -1,0 +1,43 @@
+<mat-sidenav-container class="h-screen">
+
+  <!-- Side Navigation -->
+  <mat-sidenav
+    #sidenav
+    [mode]="isMobile ? 'over' : 'side'"
+    [opened]="!isMobile"
+    class="w-64 bg-slate-900 text-white">
+
+    <div class="p-4 text-lg font-semibold border-b border-slate-700">
+      GR Reality HRMS
+    </div>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard" (click)="isMobile && sidenav.close()">Dashboard</a>
+      <a mat-list-item routerLink="/employee" (click)="isMobile && sidenav.close()">Employee</a>
+      <a mat-list-item routerLink="/department" (click)="isMobile && sidenav.close()">Department</a>
+      <a mat-list-item routerLink="/leaves" (click)="isMobile && sidenav.close()">Leaves</a>
+      <a mat-list-item routerLink="/salary" (click)="isMobile && sidenav.close()">Salary</a>
+      <a mat-list-item routerLink="/setting" (click)="isMobile && sidenav.close()">Settings</a>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content class="bg-slate-100">
+
+    <!-- Top Bar (Mobile only) -->
+    <mat-toolbar color="primary" class="md:hidden flex items-center gap-2">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="font-medium">HRMS Portal</span>
+    </mat-toolbar>
+
+    <!-- Page Content -->
+    <div class="p-4">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
