@@ -1,1 +1,55 @@
-<p>login works!</p>
+<div class="min-h-screen flex items-center justify-center bg-blue-100 p-5">
+  <mat-card class="w-full max-w-md p-6 shadow-xl rounded-2xl">
+    <!-- Title -->
+    <div class="text-center mb-6">
+      <h1 class="text-2xl font-bold text-[#05776e]">GR HRMS</h1>
+      <p class="text-gray-500 text-sm">Sign in to your account</p>
+    </div>
+
+    <!-- Form -->
+    <form [formGroup]="loginForm" class="space-y-4">
+      <!-- Email -->
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Email</mat-label>
+        <mat-icon matPrefix>mail</mat-icon>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+
+      <!-- Password -->
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Password</mat-label>
+        <mat-icon matPrefix>lock</mat-icon>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+          <mat-icon>
+            {{ hidePassword ? 'visibility_off' : 'visibility' }}
+          </mat-icon>
+        </button>
+      </mat-form-field>
+
+      <!-- Remember + Forgot -->
+      <div class="flex items-center justify-between text-sm">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" class="accent-blue-600" />
+          Remember me
+        </label>
+        <a href="#" class="text-blue-600 hover:underline"> Forgot password? </a>
+      </div>
+
+      <!-- Button -->
+      <button
+        mat-raised-button
+        color="primary"
+        class="w-full h-12 text-base font-semibold"
+        (click)="login()"
+      >
+        Login
+      </button>
+    </form>
+
+    <div class="text-center mt-4 text-sm text-gray-600">
+      Don’t have an account?
+      <a routerLink="/signup" class="text-blue-600 font-semibold hover:underline ml-1"> Sign up </a>
+    </div>
+  </mat-card>
+</div>

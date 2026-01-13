@@ -1,1 +1,84 @@
-<p>signup works!</p>
+<div class="min-h-screen flex items-center justify-center bg-bule-100">
+  <mat-card class="w-full max-w-3xl p-6 shadow-xl rounded-2xl">
+    <!-- Title -->
+    <div class="text-center mb-6">
+      <h1 class="text-2xl font-bold text-[#05776e]">Create HRMS Account</h1>
+      <p class="text-gray-500 text-sm">Signup to access HRMS</p>
+    </div>
+
+    <form [formGroup]="signupForm" class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Name -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Name</mat-label>
+          <mat-icon matPrefix>person</mat-icon>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+
+        <!-- Username -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Username</mat-label>
+          <mat-icon matPrefix>account_circle</mat-icon>
+          <input matInput formControlName="username" />
+        </mat-form-field>
+
+        <!-- Email ID -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Email ID</mat-label>
+          <mat-icon matPrefix>mail</mat-icon>
+          <input matInput type="email" formControlName="email" />
+        </mat-form-field>
+
+        <!-- Mobile Number -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Mobile Number</mat-label>
+          <mat-icon matPrefix>phone</mat-icon>
+          <input matInput type="tel" maxlength="10" formControlName="mobile" />
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Password</mat-label>
+          <mat-icon matPrefix>lock</mat-icon>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+          <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+            <mat-icon>
+              {{ hidePassword ? 'visibility_off' : 'visibility' }}
+            </mat-icon>
+          </button>
+        </mat-form-field>
+
+        <!-- Confirm Password -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Confirm Password</mat-label>
+          <mat-icon matPrefix>lock</mat-icon>
+          <input
+            matInput
+            [type]="hideConfirm ? 'password' : 'text'"
+            formControlName="confirmPassword"
+          />
+          <button mat-icon-button matSuffix type="button" (click)="hideConfirm = !hideConfirm">
+            <mat-icon>
+              {{ hideConfirm ? 'visibility_off' : 'visibility' }}
+            </mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <!-- Signup Button -->
+      <button
+        mat-raised-button
+        class="w-full h-12 text-base font-semibold mt-4 !bg-[#05776e] !text-white"
+        (click)="signup()"
+      >
+        Sign Up
+      </button>
+    </form>
+
+    <!-- Login Link -->
+    <div class="text-center mt-4 text-sm text-gray-600">
+      Already have an account?
+      <a routerLink="/" class="text-blue-600 font-semibold hover:underline ml-1"> Login </a>
+    </div>
+  </mat-card>
+</div>
