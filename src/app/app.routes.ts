@@ -21,7 +21,7 @@ export const routes: Routes = [
       },
       {
         path:"employee",
-        loadComponent:()=>import('./pages/employee/employee').then(m=>m.Employee)
+        loadComponent:()=>import('./pages/employees/employee/employee').then(m=>m.Employee)
       },
       {
         path:"salary",

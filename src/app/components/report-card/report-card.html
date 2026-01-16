@@ -1,9 +1,19 @@
-<div class="w-full flex items-center">
-  <div class="flex items-center justify-center" [ngClass]="card.color">
-    <mat-icon>{{ card.logoName }}</mat-icon>
+<div class="w-full flex items-stretch bg-white rounded shadow">
+  <!-- Icon Box -->
+  <div
+    class="w-14 flex items-center justify-center rounded-bl rounded-tl"
+    [style.backgroundColor]="data.color"
+  >
+    <mat-icon class="!text-amber-50 ">
+      {{ data.logoName }}
+    </mat-icon>
   </div>
-  <div>
-    <h3>{{ card.cardTitle }}</h3>
-    <p>{{ card.cardData }}</p>
+
+  <!-- Content -->
+  <div class="p-2">
+    <h3 class="text-black font-semibold">
+      {{ data.cardTitle | titlecase }}
+    </h3>
+    <p class="text-[#05776e] text-lg font-bold" [style.color]="data.color">{{data.cardData}}</p>
   </div>
 </div>

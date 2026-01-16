@@ -1,1 +1,57 @@
-<p>sidebar works!</p>
+<div class="w-full h-full flex flex-col">
+  <div class="bg-white h-15 border-b-2 border-amber-200 flex justify-start items-center p-4">
+    <h3 class="text-base font-semibold">Gr Reality HRMS</h3>
+  </div>
+  <div class=" flex-1">
+    <aside class="w-full h-full menu-bg text-slate-200 py-4 pb-10">
+      <ul class="space-y-3">
+        @for (menu of menuList; track menu.menuName) {
+        <li>
+          <!-- Parent Menu -->
+          <a
+            [routerLink]="menu.menuPath"
+            routerLinkActive="active"
+            class="flex items-center justify-between px-4 py-2 rounded-l-lg cursor-pointer menu-hover-bg transition"
+            (click)="toggle(menu)"
+          >
+            <div class="flex items-center gap-3">
+              <span class="material-icons text-lg">
+                {{ menu.menuIcon }}
+              </span>
+              <span class="text-sm font-medium w-full">
+                {{ menu.menuName }}
+              </span>
+            </div>
+
+            @if (menu.children) {
+            <span
+              class="material-icons text-base transition-transform duration-300"
+              [class.rotate-180]="menu.expanded"
+            >
+              expand_more
+            </span>
+            }
+          </a>
+
+          <!-- Sub Menu -->
+          @if (menu.children && menu.expanded) {
+          <ul class="ml-6 mt-1 overflow-hidden">
+            @for (child of menu.children; track child.menuName) {
+            <li class="menu-hover-bg rounded-l-lg mt-1">
+              <a
+                [routerLink]="child.menuPath"
+                routerLinkActive="active"
+                class="block px-4 py-2 text-sm text-slate-300 hover:text-white transition"
+              >
+                {{ child.menuName }}
+              </a>
+            </li>
+            }
+          </ul>
+          }
+        </li>
+        }
+      </ul>
+    </aside>
+  </div>
+</div>

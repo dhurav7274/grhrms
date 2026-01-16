@@ -5,7 +5,7 @@ import { MenuItem } from '../interface/menu.interface';
   providedIn: 'root',
 })
 export class MenuService {
-  private readonly Menu: MenuItem[] = [
+  private readonly MENU: MenuItem[] = [
     {
       menuName: 'Dashboard',
       menuIcon: 'dashboard',
@@ -13,7 +13,7 @@ export class MenuService {
     },
     {
       menuName: 'Employee',
-      menuIcon: 'employee',
+      menuIcon: 'group',
       expanded: false,
       children: [
         {
@@ -49,44 +49,50 @@ export class MenuService {
       ],
     },
     {
-      menuName:"DepartMents",
-      menuIcon:'apartment',
-      menuPath:'/department'
+      menuName: 'DepartMents',
+      menuIcon: 'apartment',
+      menuPath: '/department',
     },
     {
-      menuName:'Salary',
-      menuIcon:'account_balance_wallet',
-      expanded:false,
-      children:[
+      menuName: 'Salary',
+      menuIcon: 'account_balance_wallet',
+      expanded: false,
+      children: [
         {
-          menuName:'Create Salary',
-          menuPath:'create-salary'
+          menuName: 'Create Salary',
+          menuPath: 'create-salary',
         },
         {
-          menuName:"salary Details",
-          menuPath:"salary"
-        }
-      ]
-    }
-    ,
+          menuName: 'salary Details',
+          menuPath: 'salary',
+        },
+      ],
+    },
     {
-      menuName:"setting",
-      menuIcon:"setting",
-      expanded:false,
-      children:[
+      menuName: 'setting',
+      menuIcon: 'settings',
+      expanded: false,
+      children: [
         {
-          menuName:'Create Roles',
-          menuPath:"create-roles"
+          menuName: 'Create Roles',
+          menuPath: 'create-roles',
         },
         {
-          menuName:"Role Permission",
-          menuPath:'role-permission'
+          menuName: 'Role Permission',
+          menuPath: 'role-permission',
         },
         {
-          menuName:"Company Setup",
-          menuPath:"company-setup"
-        }
-      ]
-    }
+          menuName: 'Company Setup',
+          menuPath: 'company-setup',
+        },
+        {
+          menuName: 'Profile',
+          menuPath: 'profile',
+        },
+      ],
+    },
   ];
+  getMenu() {
+    return this.MENU;
+  }
 }
